@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio profesional de Aimar Canino Almeida, estudiante de Sistemas Microinformáticos y Redes.">
+<title>Aimar Canino Almeida | Portfolio</title>
+<style>
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef1f7;
+  --text: #172033;
+  --muted: #667085;
+  --accent: #5b5bd6;
+  --accent-2: #7c3aed;
+  --line: #e4e7ec;
+  --shadow: 0 18px 50px rgba(25, 32, 56, .10);
+  --radius: 22px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+a { color: inherit; text-decoration: none; }
+.container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+.nav {
+  position: sticky; top: 0; z-index: 20;
+  backdrop-filter: blur(16px);
+  background: rgba(246,247,251,.82);
+  border-bottom: 1px solid rgba(228,231,236,.75);
+}
+.nav-inner { height: 72px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.logo { font-weight: 800; letter-spacing: -.04em; font-size: 1.05rem; }
+.logo span { color: var(--accent); }
+.nav-links { display:flex; gap:24px; font-size:.93rem; color:var(--muted); }
+.nav-links a:hover { color:var(--accent); }
+.hero {
+  min-height: 78vh; display:grid; place-items:center;
+  padding: 80px 0 70px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(124,58,237,.13), transparent 28%),
+    radial-gradient(circle at 10% 40%, rgba(91,91,214,.11), transparent 30%);
+}
+.hero-grid { display:grid; grid-template-columns: 1.35fr .65fr; align-items:center; gap:70px; }
+.eyebrow { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.14em; font-size:.78rem; margin-bottom:14px; }
+h1 { font-size: clamp(3rem, 7vw, 5.8rem); line-height:.95; letter-spacing:-.065em; max-width:800px; }
+.hero h1 span { color:var(--accent); }
+.lead { margin-top:25px; max-width:650px; font-size:1.15rem; color:var(--muted); }
+.ctas { display:flex; gap:14px; flex-wrap:wrap; margin-top:32px; }
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:13px 19px; border-radius:999px; font-weight:750; transition:.25s;
+}
+.btn-primary { background:var(--text); color:white; }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
+.btn-secondary { background:var(--surface); border:1px solid var(--line); }
+.btn-secondary:hover { border-color:var(--accent); color:var(--accent); }
+.profile-wrap { display:grid; place-items:center; }
+.profile {
+  width:min(310px, 70vw); aspect-ratio:1; border-radius:32px;
+  object-fit:cover; background:var(--surface-2); border:10px solid var(--surface);
+  box-shadow:var(--shadow); transform:rotate(2deg);
+}
+.contact-strip { padding:18px 0; background:var(--text); color:white; }
+.contact-row { display:flex; gap:26px; flex-wrap:wrap; justify-content:center; font-size:.92rem; }
+section { padding:100px 0; }
+.section-head { margin-bottom:45px; max-width:700px; }
+.kicker { color:var(--accent); font-size:.78rem; text-transform:uppercase; letter-spacing:.14em; font-weight:800; }
+h2 { font-size:clamp(2rem,4vw,3.4rem); line-height:1.05; letter-spacing:-.045em; margin-top:8px; }
+.section-intro { color:var(--muted); margin-top:15px; }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.card {
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:30px; box-shadow:0 8px 30px rgba(25,32,56,.04);
+}
+.card h3 { margin-bottom:12px; font-size:1.15rem; }
+.tags { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+.tag { padding:8px 12px; background:var(--surface-2); border-radius:999px; font-size:.88rem; }
+.timeline { position:relative; max-width:900px; }
+.timeline::before {
+  content:""; position:absolute; left:8px; top:8px; bottom:8px; width:2px; background:var(--line);
+}
+.timeline-item { position:relative; padding-left:40px; margin-bottom:30px; }
+.timeline-dot { position:absolute; left:0; top:9px; width:18px; height:18px; border-radius:50%; background:var(--accent); border:4px solid var(--bg); box-shadow:0 0 0 2px var(--accent); }
+.timeline-content {
+  background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:23px 25px;
+}
+.item-top { display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+.item-company { font-weight:850; font-size:1.15rem; }
+.item-date { color:var(--accent); font-size:.85rem; font-weight:700; }
+.timeline h3 { margin-top:5px; font-size:1rem; }
+.muted { color:var(--muted); }
+.edu-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.edu-card { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:25px; }
+.edu-year { color:var(--accent); font-size:.82rem; font-weight:800; margin-bottom:14px; }
+.edu-card h3 { font-size:1.05rem; line-height:1.3; }
+.school { font-weight:700; margin-top:8px; }
+.skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.skill-card { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:25px; }
+.skill-card ul { list-style:none; margin-top:14px; }
+.skill-card li { padding:7px 0; border-bottom:1px solid var(--line); }
+.skill-card li:last-child { border-bottom:0; }
+.hobbies { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.hobby { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:28px; }
+.hobby-icon { font-size:1.8rem; margin-bottom:12px; }
+.cta {
+  background:linear-gradient(135deg, var(--text), #303756);
+  color:white; border-radius:30px; padding:55px;
+  display:flex; justify-content:space-between; align-items:center; gap:30px;
+}
+.cta p { color:#d9deeb; margin-top:8px; }
+.cta .btn { background:white; color:var(--text); }
+footer { padding:30px 0 45px; color:var(--muted); font-size:.9rem; text-align:center; }
+.reveal { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:none; }
+@media(max-width:850px) {
+  .nav-links { display:none; }
+  .hero-grid, .about-grid { grid-template-columns:1fr; }
+  .profile-wrap { order:-1; }
+  .edu-grid, .skills-grid, .hobbies { grid-template-columns:1fr; }
+  .hero { min-height:auto; }
+  section { padding:75px 0; }
+  .cta { flex-direction:column; align-items:flex-start; padding:38px; }
+}
+@media(max-width:520px) {
+  .container { width:min(100% - 26px, 1120px); }
+  .contact-row { justify-content:flex-start; }
+  h1 { font-size:3.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="#inicio">Aimar<span>.</span></a>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#formacion">Formación</a>
+      <a href="#competencias">Competencias</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Portfolio profesional</div>
+      <h1>Aimar Canino <span>Almeida</span></h1>
+      <p class="lead">Estudiante de Sistemas Microinformáticos y Redes, con experiencia en formación dual, FCT, marketing y una experiencia Erasmus+ internacional.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#experiencia">Ver experiencia ↓</a>
+        <a class="btn btn-secondary" href="mailto:aimaralmeida0@gmail.com">Contactar</a>
+      </div>
+    </div>
+    <div class="profile-wrap reveal">
+      <img class='profile' src='img/aimarencpd.png' alt='Foto de Aimar Canino Almeida'>
+    </div>
+  </div>
+</header>
+
+<div class="contact-strip">
+  <div class="container contact-row">
+    <span>✉ aimaralmeida0@gmail.com</span>
+    <span>☎ 649622752</span>
+    <span>⌖ Las Palmas de Gran Canaria, España</span>
+  </div>
+</div>
+
+<main>
+<section id="sobre-mi">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">01 — Perfil</div>
+      <h2>Una base tecnológica con experiencia real.</h2>
+      <p class="section-intro">Actualmente cursando 2º de Sistemas Microinformáticos y Redes, con una trayectoria que combina tecnología, atención al entorno profesional, marketing y experiencia internacional.</p>
+    </div>
+    <div class="about-grid">
+      <div class="card reveal">
+        <h3>Sobre mí</h3>
+        <p>Serio y responsable, con habilidades de relaciones sociales. Acostumbrado al trabajo en equipo, profesional y puntual. Mis valores se basan en el compromiso, el orden y la eficiencia.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Perfil tecnológico</h3>
+        <p>Tecnológicamente hábil, con experiencia en plataformas de medios sociales y programas de tecnología de oficina, además de capacidad para buscar información y utilizar herramientas digitales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">02 — Experiencia</div>
+      <h2>Experiencia laboral</h2>
+      <p class="section-intro">Experiencias realizadas durante la FP Dual, FCT y Erasmus+.</p>
+    </div>
+    <div class="timeline"><article class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="item-top"><span class="item-company">Vans</span><span class="item-date">02/2024 – 04/2024</span></div>
+        <h3>Alumno FP Dual</h3>
+        <p class="muted">Las Palmas (Triana)</p>
+        <p>Alumno seleccionado de la FP Dual con prácticas en Vans, Triana</p>
+      </div>
+    </article>
+<article class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="item-top"><span class="item-company">Natura</span><span class="item-date">01/2025 – 03/2025</span></div>
+        <h3>Alumno FP Dual</h3>
+        <p class="muted">Las Palmas (Mesa y López)</p>
+        <p>Alumno seleccionado de la FP Dual con prácticas en Natura, Mesa y López</p>
+      </div>
+    </article>
+<article class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="item-top"><span class="item-company">Renault</span><span class="item-date">03/2025 – 05/2025</span></div>
+        <h3>Alumno FCT</h3>
+        <p class="muted">El Sebadal</p>
+        <p>Alumno de FCT, ayudante de coordinador de marketing</p>
+      </div>
+    </article>
+<article class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="item-top"><span class="item-company">PhoneZay</span><span class="item-date">03/2026 – 06/2026</span></div>
+        <h3>Alumno Erasmus+</h3>
+        <p class="muted">Dundalk, Ireland</p>
+        <p>Alumno seleccionado de Erasmus+</p>
+      </div>
+    </article></div>
+  </div>
+</section>
+
+<section id="formacion">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">03 — Formación</div>
+      <h2>Formación académica</h2>
+    </div>
+    <div class="edu-grid"><article class="edu-card">
+      <div class="edu-year">09/2025 – Presente</div>
+      <h3>CFGM Sistemas Microinformáticos y Redes</h3>
+      <p class="school">CPEIPS SAN JUAN BOSCO</p>
+      <p class="muted">Las Palmas de Gran Canaria</p>
+      <p>Actualmente cursando 2ª Sistemas Microinformáticos y Redes</p>
+    </article>
+<article class="edu-card">
+      <div class="edu-year">09/2023 – 06/2025</div>
+      <h3>CFGM Comercio y Marketing - Actividades Comerciales</h3>
+      <p class="school">CPEIPS SAN JUAN BOSCO</p>
+      <p class="muted">Las Palmas de Gran Canaria</p>
+      
+    </article>
+<article class="edu-card">
+      <div class="edu-year">09/2019 – 06/2023</div>
+      <h3>4º Educación Secundaria Obligatoria</h3>
+      <p class="school">IES EL BATÁN</p>
+      <p class="muted">Las Palmas de Gran Canaria</p>
+      
+    </article></div>
+  </div>
+</section>
+
+<section id="competencias">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">04 — Competencias</div>
+      <h2>Lo que aporto a un equipo.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3>Habilidades interpersonales</h3>
+        <ul>
+          <li>Flexibilidad, adaptabilidad y puntualidad</li>
+          <li>Colaboración y trabajo en equipo</li>
+          <li>Capacidad para escuchar</li>
+          <li>Empatía</li>
+        </ul>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Habilidades digitales</h3>
+        <ul>
+          <li>Búsqueda de información (Internet research)</li>
+          <li>Uso de herramientas digitales</li>
+        </ul>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Idiomas</h3>
+        <ul>
+          <li>Inglés — B1</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">05 — Más allá del trabajo</div>
+      <h2>Intereses y tiempo libre</h2>
+    </div>
+    <div class="hobbies">
+      <div class="hobby reveal"><div class="hobby-icon">⚽</div><h3>Deportes</h3><p class="muted">Practicar diferentes tipos de deportes con mis amistades y familia.</p></div>
+      <div class="hobby reveal"><div class="hobby-icon">👥</div><h3>Vida social</h3><p class="muted">Pasar tiempo en familia y también con mis amigos.</p></div>
+      <div class="hobby reveal"><div class="hobby-icon">✈️</div><h3>Ocio</h3><p class="muted">Leer, jugar, viajar, entre otras muchas cosas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="cta reveal">
+      <div>
+        <div class="kicker" style="color:#b8b9ff">06 — Contacto</div>
+        <h2>¿Hablamos?</h2>
+        <p>Disponible para oportunidades de formación y desarrollo profesional.</p>
+      </div>
+      <a class="btn" href="mailto:aimaralmeida0@gmail.com">Enviar un email →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">© 2026 Aimar Canino Almeida · Portfolio personal</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
